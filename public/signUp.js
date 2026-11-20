@@ -15,7 +15,6 @@ $(function () {
             console.log('new user id='+user.id)
             sessionStorage.setItem('uid',user.id)
             sessionStorage.setItem('uName',user[0].name)
-            location.href = "http://localhost:2345/catalog.html"
-        })
+           location.href = "/catalog.html"
     })
 })
