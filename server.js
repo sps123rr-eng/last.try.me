@@ -10,4 +10,5 @@ app.use(express.urlencoded({extended:true}))
 app.use('/',express.static(path.join(__dirname,'public')))
 app.use('/api',require('./routes/api').route)
 
-app.listen(2345,() => console.log('server started at port 2345'))
+const PORT = process.env.PORT || 2345
+app.listen(PORT, () => console.log('server started at port ' + PORT))
