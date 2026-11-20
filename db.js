@@ -1,14 +1,11 @@
+require('dotenv').config()
 const sequelize=require('sequelize')
 
-const db=new sequelize('shopdb','nitin','system',{
-    host:'localhost',
+const db=new sequelize(process.env.DB_NAME,process.env.DB_USER,process.env.DB_PASS,{
+    host:process.env.DB_HOST,
     dialect:'mysql',
-    pool:{
-        min:0,
-        max:2
-    }
+    pool:{ min:0, max:2 }
 })
-
 const User=db.define('users',{
     id:{
         type:sequelize.INTEGER,
@@ -60,13 +57,9 @@ const Cart=db.define('cart',{
         defaultValue:1
     }
 })
+db.sync().then(()=>console.log('database has been synced'))
+.catch((error)=>console.log('error syncing the database:', error))
 
-db.sync()
-    .then(() => console.log('database has been synced'))
-    .catch((error) => console.log('error syncing the database:', error.message))
-
-exports = module.exports = {
-    User,
-    Product,
-    Cart
+exports=module.exports={
+    User,Product,Cart
 }
