@@ -14,7 +14,8 @@ $(function () {
         addUser(name,pswrd,function(user){
             console.log('new user id='+user.id)
             sessionStorage.setItem('uid',user.id)
-            sessionStorage.setItem('uName',user[0].name)
-           location.href = "/catalog.html"
+            sessionStorage.setItem('uName',user.name)
+            location.href = "/catalog.html"
+        })
     })
 })

@@ -13,19 +13,19 @@ $(function () {
 
         fetchUser(name,pswrd,function(user){
             console.log(user);
-            
+
             if(user.length == 0){
                 console.log('failed to login')
+                alert('Wrong username or password')
             }else{
                 console.log('login with:'+user[0].name)
                 sessionStorage.setItem('uid',user[0].id)
                 sessionStorage.setItem('uName',user[0].name)
                 if(user[0].name == 'admin'){
-                    location.href = 'http://localhost:2345/add_products.html'
+                    location.href = '/add_products.html'
                 }else{
-                    location.href = "http://localhost:2345/catalog.html"
+                    location.href = '/catalog.html'
                 }
-                
             }
         })
     })
